@@ -9,12 +9,14 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet as wn
 
+# NLTK corpus downloads
 nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
 
 
+# This class manages all text pre processing
 class TextProcessor:
 
     # Function to clean and tokenize a give string column
@@ -28,9 +30,10 @@ class TextProcessor:
         # Tokenize string
         self[f'{column_name}'] = [word_tokenize(str(text)) for text in self[f'{column_name}']]
 
+        # return output
         return self
 
-    # Text cleaning functionalities using NLP techniques
+    # Text cleaning functions using NLP techniques
     def clean_string_column(self, column_name):
         # Set up parts of speech tagging
         tag_map = defaultdict(lambda: wn.NOUN)
@@ -55,4 +58,5 @@ class TextProcessor:
             # Set final set of words to column
             self.loc[index, f'{column_name}'] = str(results)
 
+        # return output
         return self

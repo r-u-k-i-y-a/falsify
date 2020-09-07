@@ -3,7 +3,9 @@ from falsify_app.TextFeaturizer import TextFeaturizer
 from falsify_app.Classifier import Classifier
 
 
+# This class manages the execution procedure
 class Runner:
+
     @staticmethod
     def classify_review(data):
         # Execute reprocessing techniques
@@ -12,4 +14,5 @@ class Runner:
         data = TextFeaturizer.featurization(data, 'reviewContent')
         data = Classifier.classify(data)
 
+        # Return output
         return data

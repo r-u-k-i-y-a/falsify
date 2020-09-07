@@ -1,4 +1,7 @@
+# This class contains utility functions
 class Utilities:
+
+    # Function to pretty print final string
     def prediction_stats(value, probability):
 
         probability = probability * 100

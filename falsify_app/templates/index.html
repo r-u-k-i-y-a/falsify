@@ -86,7 +86,7 @@
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
-
+<!-- Results modal area -->
 <div class="modal fade" id="modalResults" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -113,6 +113,7 @@
     </div>
 </div>
 
+<!-- Modal to show results when required -->
 <script>
     let searchParams = new URLSearchParams(window.location.search);
 
@@ -120,8 +121,6 @@
         $('#modalMessage').text(searchParams.get('data'));
         $('#modalResults').modal();
     }
-
-
 </script>
 
 </body>
