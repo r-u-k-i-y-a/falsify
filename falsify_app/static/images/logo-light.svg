@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="575" height="178" viewBox="0 0 575 178">
+  <defs>
+    <clipPath id="clip-LOGO">
+      <rect width="575" height="178"/>
+    </clipPath>
+  </defs>
+  <g id="LOGO" clip-path="url(#clip-LOGO)">
+    <text id="FALSIFY" transform="translate(10 11)" fill="#00d482" font-size="136" font-family="ArialRoundedMTBold, Arial Rounded MT" letter-spacing="-0.011em"><tspan x="0" y="129">F</tspan><tspan y="129" fill="#fff">ALSI</tspan><tspan y="129">F</tspan><tspan y="129" fill="#fff">Y</tspan></text>
+  </g>
+</svg>

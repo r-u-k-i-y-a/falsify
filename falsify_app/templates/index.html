@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falsify - Online fake review classifier</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/iofrm-style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/iofrm-theme26.css') }}">
+</head>
+<body>
+<div class="form-body">
+    <div class="website-logo">
+        <a href="index.html">
+            <div class="logo">
+                <img class="logo-size" src="{{ url_for('static', filename='images/logo-light.svg') }}" alt="">
+            </div>
+        </a>
+    </div>
+    <div class="row">
+        <div class="img-holder">
+            <div class="bg"></div>
+            <div class="info-holder">
+                <h2>Identify fake reviews in<br><span>online restaurants.</span></h2>
+            </div>
+        </div>
+        <div class="form-holder">
+            <div class="form-content">
+                <div class="form-items">
+                    <h3 class="mb-4">Just fill the form to submit a review</h3>
+                    <form action="{{ url_for('predict') }}" method="post">
+                        <div class="form-row">
+                            <div class="col">
+                                <select class="form-control" id="sel1" name="user-rating" required>
+                                    <option disabled selected="true">Select User Rating</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="User Review Count"
+                                       name="user-review-count" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <textarea class="form-control" placeholder="Review" name="review-content"
+                                          required></textarea>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="form-row">
+                            <div class="col">
+                                <select class="form-control" id="sel2" name="restaurant-rating" required>
+                                    <option disabled selected="true">Select Restaurant Rating
+                                    </option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Restaurant Review Count"
+                                       name="restaurant-review-count" required>
+                            </div>
+                        </div>
+
+                        <div class="form-button">
+                            <button id="submit" type="submit" class="ibtn extra-padding">Submit Review</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
+<div class="modal fade" id="modalResults" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <!-- Modal header -->
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Results</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="fade show" role="alert">
+                    <p id="modalMessage" style="text-align:center"></p>
+                </div>
+
+                <!-- Okay button -->
+                <div class="modal-footer row">
+                    <button type="button" class="btn btn-success" style="width: 100%"
+                            onclick="$('#modalResults').modal('hide')">Okay
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let searchParams = new URLSearchParams(window.location.search);
+
+    if (searchParams.has('data')) {
+        $('#modalMessage').text(searchParams.get('data'));
+        $('#modalResults').modal();
+    }
+
+
+</script>
+
+</body>
+</html>
